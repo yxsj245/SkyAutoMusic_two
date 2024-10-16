@@ -3,7 +3,7 @@ name: push_gitee
 on:
   push:
     branches:
-      - main
+      - GUI-Live
 
   workflow_dispatch:  # 支持手动触发工作流
 
@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: 检出仓库
       uses: actions/checkout@v4
+      with:
+        ref: GUI-Live  # 确保检出的是 GUI-Live 分支
 
     - name: 设置Git配置文件
       run: |
@@ -23,8 +25,8 @@ jobs:
       env:
         GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
       run: |
-        git remote add gitee https://xiao-zhu245:${{ secrets.GITEE_TOKEN }}@gitee.com/xiao-zhu245/SkyAutoMusic.git #仓库地址
-        git fetch gitee GUI-Live  # 拉取远程仓库最新内容
-        git reset --soft gitee/GUI-Live  # 软重置以保持工作区不变
+        git remote add gitee https://xiao-zhu245:${{ secrets.GITEE_TOKEN }}@gitee.com/xiao-zhu245/SkyAutoMusic.git
+        git fetch gitee
+        git reset --soft gitee/GUI-Live  # 软重置保持工作区不变
         git commit -m "从GitHub-CI同步过来的文件" || echo "No changes to commit"
         git push --force gitee GUI-Live  # 强制推送到远程仓库
