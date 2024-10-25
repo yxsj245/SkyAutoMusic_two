@@ -1,4 +1,4 @@
-name: python_pack
+name: python_pack_starter
 
 on:
   workflow_dispatch:  # 允许手动触发工作流
@@ -35,11 +35,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip #更新pip
         python -m pip install pyinstaller #安装打包工具
-        python -m pip install tkinterdnd2 keyboard pygetwindow chardet
+        python -m pip install tkinterdnd2
 
     - name: 打包项目
       run: |
-        pyinstaller --noconsole -F code/starter.py code/run.py
+        pyinstaller --noconsole -F code/starter.py
 
     - name: 上传文件
       uses: actions/upload-artifact@v4
