@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      CODE_NAME: 自动弹琴_管理器  # 定义 文件名 
+      CODE_NAME: 自动弹琴管理器  # 定义 文件名 
     strategy:
       fail-fast: false
       matrix:
