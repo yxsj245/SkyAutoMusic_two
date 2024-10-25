@@ -237,7 +237,7 @@ def startrun():
         global process
         but1.config(text='停止自动弹琴程序', command=stop)
         mainmenu.iconify()  # 最小化窗口
-        process = subprocess.Popen(['python', 'run.py'])  # 启动子进程
+        process = subprocess.Popen(['光遇自动弹琴软件.exe'])  # 启动子进程
         thread_check = threading.Thread(target=check_process)
         thread_check.start()
 
@@ -251,7 +251,7 @@ global mainmenu
 mainmenu = tk.Tk()
 mainmenu.geometry("305x180")  # 设置窗口大小
 # mainmenu.minsize(450,382)
-mainmenu.title('自动弹琴启动器1.0')
+mainmenu.title('自动弹琴管理器1.0')
 
 tk.Label(mainmenu, text='————安装————', font=('微软雅黑', 16)).place(relx=0.5, y=40, anchor='center')
 ttk.Button(mainmenu, text='安装曲谱', command=create_drag_and_drop_window, padding=button_padding).place(relx=0.3, y=90, anchor='center')
