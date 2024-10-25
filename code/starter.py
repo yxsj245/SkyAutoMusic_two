@@ -251,7 +251,7 @@ global mainmenu
 mainmenu = tk.Tk()
 mainmenu.geometry("305x180")  # 设置窗口大小
 # mainmenu.minsize(450,382)
-mainmenu.title('自动弹琴曲谱启动器1.0')
+mainmenu.title('自动弹琴启动器1.0')
 
 tk.Label(mainmenu, text='————安装————', font=('微软雅黑', 16)).place(relx=0.5, y=40, anchor='center')
 ttk.Button(mainmenu, text='安装曲谱', command=create_drag_and_drop_window, padding=button_padding).place(relx=0.3, y=90, anchor='center')
