@@ -39,7 +39,7 @@ jobs:
 
     - name: 打包项目
       run: |
-        pyinstaller --noconsole -F starter.py run.py
+        pyinstaller --noconsole -F code/starter.py code/run.py
 
     - name: 上传文件
       uses: actions/upload-artifact@v4
