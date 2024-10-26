@@ -39,7 +39,7 @@ jobs:
 
     - name: 打包项目
       run: |
-        pyinstaller --noconsole -F code/starter.py
+        pyinstaller --noconsole -F code/starter.py --paths C:\hostedtoolcache\windows\Python\3.12.7\x64\Lib\site-packages --add-data "C:\hostedtoolcache\windows\Python\3.12.7\x64\Lib\site-packages\tkinterdnd2;tkinterdnd2" --add-data "C:\hostedtoolcache\windows\Python\3.12.7\x64\Lib\site-packages\tkinterdnd2;tkdnd" --hidden-import=tkinterdnd2 --hidden-import=tkdnd --clean
 
     - name: 上传文件
       uses: actions/upload-artifact@v4
