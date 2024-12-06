@@ -9,6 +9,7 @@ import codecs
 import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
+import psutil
 
 # 键位映射表
 key_mapping = {
@@ -19,6 +20,28 @@ key_mapping = {
     "2Key5": "H", "2Key6": "J", "2Key7": "K", "2Key8": "L", "2Key9": ";",
     "2Key10": "N", "2Key11": "M", "2Key12": ",", "Key13": ".", "Key14": "/"
 }
+
+def check_window():
+    # 获取名为 "Sky" 的窗口
+    window = gw.getWindowsWithTitle("Sky")
+    sky_windows = [win for win in window if win.title == "Sky"]
+
+    # 如果找到 Sky 窗口，激活它
+    if sky_windows:
+        sky_window = sky_windows[0]
+        sky_window.activate()
+        return
+
+    # 如果没有找到 Sky 窗口，检查是否有 "光·遇" 窗口
+    window = gw.getWindowsWithTitle("光·遇")
+    light_game_windows = [win for win in window if win.title == "光·遇"]
+
+    if light_game_windows:
+        light_game_window = light_game_windows[0]
+        light_game_window.activate()
+    else:
+        messagebox.showerror('错误', '未找到游戏窗口')
+        exit()
 
 # 加载JSON文件
 def load_json(file_path):
@@ -186,15 +209,7 @@ def start_song(chosen_song):
     songs_folder = "score/score/"
     song_data = load_json(os.path.join(songs_folder, chosen_song))
     if song_data:
-        sky_window = None
-        window = gw.getWindowsWithTitle("Sky")
-        sky_windows = [win for win in window if win.title == "Sky"]
-        if sky_windows:
-            sky_window = sky_windows[0]
-            sky_window.activate()
-        else:
-            messagebox.showerror('错误','未找到游戏窗口')
-            exit()
+        check_window()
         try:
             total_duration = song_data[0]["songNotes"][-1]["time"]
         except TypeError as e:
