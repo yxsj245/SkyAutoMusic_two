@@ -9,7 +9,6 @@ import codecs
 import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
-import psutil
 
 # 键位映射表
 key_mapping = {
